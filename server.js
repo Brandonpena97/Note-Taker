@@ -7,14 +7,14 @@ const PORT = 3001;
 
 const app = express(); // initialize an express server and call it 'app'
 
-function createNewNote (body, ) {
-    const note = body;
-    notesArray.push(note);
-    fs.writeFileSync(
-        path.join(__dirname,'./db/db.json')
-    )
+//function createNewNote (body, ) {
+    //const note = body;
+    //notesArray.push(note);
+    //fs.writeFileSync(
+       // path.join(__dirname,'./db/db.json')
+    //)
 
-}
+//}
 
 // middleware
 app.use(express.static('public'))
@@ -36,7 +36,7 @@ app.get('/api/notes', (req, res) => {
 
 app.post('./api/notes', (req, res) => {
 
-    notes.push(req, body);
+    notes.push(req.body);
 
     fs.writeFileSync("./db/db.json", notes)
 
