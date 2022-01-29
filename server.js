@@ -1,8 +1,8 @@
 const express = require('express');
 const { fs } = require('fs');
 const path = require('path');
-const notes = require('./db/db.json')
-const uniqid = require('uniqid')
+const notes = require('./db/db.json');
+const uniqid = require('uniqid');
 
 const PORT = 3001;
 
