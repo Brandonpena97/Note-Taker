@@ -1,7 +1,8 @@
 const express = require('express');
-const { fstat } = require('fs');
+const { fs } = require('fs');
 const path = require('path');
 const notes = require('./db/db.json')
+const uniqid = require('uniqid')
 
 const PORT = 3001;
 
@@ -18,6 +19,8 @@ const app = express(); // initialize an express server and call it 'app'
 
 // middleware
 app.use(express.static('public'))
+app.use(express.json());
+app.use(express.urlencoded({extended: true}));
 
 
 // HTML ROUTES
@@ -34,11 +37,17 @@ app.get('/api/notes', (req, res) => {
     res.json(notes)
 })
 
-app.post('./api/notes', (req, res) => {
+app.post('/api/notes', (req, res) => {
 
-    notes.push(req.body);
+    const newNote = {
+        id: uniqid(),
+        title: req.body.title,
+        text: req.body.text
+    }
 
-    fs.writeFileSync("./db/db.json", notes)
+    notes.push(newNote);
+
+    fs.writeFileSync("./db/db.json", json.stringify(notes))
 
     res.json(req.body)
 })
