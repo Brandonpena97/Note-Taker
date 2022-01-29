@@ -4,7 +4,7 @@ const path = require('path');
 const notes = require('./db/db.json');
 const uniqid = require('uniqid');
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001; 
 
 const app = express(); // initialize an express server and call it 'app'
 
