@@ -1,5 +1,5 @@
 const express = require('express');
-const { fs } = require('fs');
+const  fs  = require('fs');
 const path = require('path');
 const notes = require('./db/db.json');
 const uniqid = require('uniqid');
@@ -47,12 +47,13 @@ app.post('/api/notes', (req, res) => {
 
     notes.push(newNote);
 
-    fs.writeFileSync("./db/db.json", json.stringify(notes))
+    fs.writeFileSync("./db/db.json", JSON.stringify(notes))
+
 
     res.json(req.body)
 })
 
 
 app.listen(PORT, () => {
-    console.log("Server is running. Listening to port " + PORT)
+    console.log("Server is running. Listening to port " + PORT) 
 })
